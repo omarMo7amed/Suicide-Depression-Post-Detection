@@ -5,7 +5,7 @@ from groq import Groq
 
 # ── Configuration ────────────────────────────────────────────────────────────
 
-GROQ_API_KEY = "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"
+# GROQ_API_KEY = "your api key here ya zmeeeeeeeeely"
 MODEL_NAME = "mixtral-8x7b-32768"
 
 
