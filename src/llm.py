@@ -1,12 +1,10 @@
-
 import os
 import time
 from groq import Groq
 
-# ── Configuration ────────────────────────────────────────────────────────────
-
-# GROQ_API_KEY = "your api key here ya zmeeeeeeeeely"
-MODEL_NAME = "mixtral-8x7b-32768"
+# ── Configuration ─────────────────────────────────────────────────────────────
+GROQ_API_KEY = "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"
+MODEL_NAME = "openai/gpt-oss-20b"
 
 
 # ── Prompt templates ──────────────────────────────────────────────────────────
@@ -49,18 +47,13 @@ def explain_prediction(text: str,
                        model_name: str = None) -> str:
 
     key = api_key or GROQ_API_KEY
-    if not key:
-        return (
-            "Groq API key not set. "
-            "Please set the GROQ_API_KEY environment variable to enable LLM explanations."
-        )
-
     client = Groq(api_key=key)
 
-    support_note = SUPPORT_NOTE_SUICIDE if label == 'Suicide Risk' else SUPPORT_NOTE_NORMAL
+    model_name = model_name or MODEL_NAME
+    support_note = SUPPORT_NOTE_SUICIDE if label == "Suicide Risk" else SUPPORT_NOTE_NORMAL
 
     user_prompt = USER_PROMPT_TEMPLATE.format(
-        text=text[:2000],           # Truncate very long posts
+        text=text[:2000],
         label=label,
         confidence=confidence,
         support_note=support_note,
@@ -79,12 +72,11 @@ def explain_prediction(text: str,
                 max_tokens=600,
                 temperature=0.4,
             )
-            explanation = response.choices[0].message.content.strip()
-            return explanation
+            return response.choices[0].message.content.strip()
 
         except Exception as e:
             error_str = str(e).lower()
-            if 'rate' in error_str and attempt < max_retries:
+            if "rate" in error_str and attempt < max_retries:
                 wait = 2 ** attempt
                 print(
                     f"Rate limit hit. Waiting {wait}s before retry {attempt}/{max_retries}…")
@@ -106,12 +98,12 @@ def batch_explain(texts: list,
     for text, label, conf in zip(texts, labels, confidences):
         exp = explain_prediction(text, label, conf, api_key=api_key)
         explanations.append(exp)
-        time.sleep(0.5)    # polite rate-limiting
+        time.sleep(0.5)
     return explanations
 
 
 # ── Quick test ────────────────────────────────────────────────────────────────
-if __name__ == '__main__':
+if __name__ == "__main__":
     sample_text = (
         "I've been feeling completely worthless lately. "
         "Nothing I do matters. I keep thinking about ending everything. "
@@ -119,7 +111,7 @@ if __name__ == '__main__':
     )
     result = explain_prediction(
         text=sample_text,
-        label='Suicide Risk',
+        label="Suicide Risk",
         confidence=94.2,
     )
     print(result)
