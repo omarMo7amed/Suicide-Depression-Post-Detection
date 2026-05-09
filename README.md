@@ -1,14 +1,6 @@
 # Suicide & Depression Post Detection
 
-### Project #12 — NLP + ML + LLM System
-
-> ⚠️ **Ethical Notice**: This tool is intended for **research and educational purposes only**.
-> It is NOT a substitute for professional mental health assessment.
-> If you or someone you know is in crisis, please contact a qualified mental health professional.
-
----
-
-## 📋 Project Overview
+## Project Overview
 
 A complete NLP + Machine Learning pipeline that classifies Reddit posts as **Suicide Risk** or **Non-Suicide**
 using the [Suicide Watch dataset](https://www.kaggle.com/datasets/nikhileswarkomati/suicide-watch)
@@ -23,7 +15,7 @@ using the [Suicide Watch dataset](https://www.kaggle.com/datasets/nikhileswarkom
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 suicide-depression-detector/
@@ -47,7 +39,7 @@ suicide-depression-detector/
 
 ---
 
-## 🚀 Quick Start (Google Colab)
+## Quick Start (Google Colab)
 
 ### 1. Clone / Upload the project
 
@@ -99,7 +91,7 @@ A public share link will appear — click it to use the interactive demo.
 
 ---
 
-## 📊 Dataset
+## Dataset
 
 | Property  | Value                            |
 | --------- | -------------------------------- |
@@ -111,7 +103,7 @@ A public share link will appear — click it to use the interactive demo.
 
 ---
 
-## 🔧 Preprocessing Pipeline
+## Preprocessing Pipeline
 
 ```
 Raw Post Text
@@ -125,7 +117,7 @@ Raw Post Text
 
 ---
 
-## ⚙️ Feature Engineering
+## Feature Engineering
 
 ### TF-IDF (primary)
 
@@ -152,7 +144,7 @@ Raw Post Text
 
 ---
 
-## 🤖 Models Trained
+## Models Trained
 
 | Model               | Type              | Class Balancing           |
 | ------------------- | ----------------- | ------------------------- |
@@ -171,7 +163,7 @@ Raw Post Text
 
 ---
 
-## 📈 Evaluation Metrics
+## Evaluation Metrics
 
 - Accuracy, Precision, Recall, F1-Score, ROC-AUC
 - Confusion matrix per model
@@ -180,7 +172,7 @@ Raw Post Text
 
 ---
 
-## 💬 LLM Integration (Groq)
+## LLM Integration (Groq)
 
 Uses **Groq's LLaMA-3 8B** model to explain predictions:
 
@@ -204,7 +196,7 @@ The LLM highlights:
 
 ---
 
-## 🖥️ Gradio App Features
+## Gradio App Features
 
 - Free-text input field for any Reddit-style post
 - Dropdown to select which ML model to use
@@ -215,7 +207,7 @@ The LLM highlights:
 
 ---
 
-## 📦 Dependencies
+## Dependencies
 
 See `requirements.txt`. Key packages:
 
@@ -226,7 +218,7 @@ matplotlib, seaborn, wordcloud, imbalanced-learn
 
 ---
 
-## 🗂️ Output Files
+## Output Files
 
 After running the notebook, these files are generated:
 
@@ -256,7 +248,7 @@ outputs/plots/
 
 ---
 
-## 📌 Important Notes
+## Important Notes
 
 1. **Run the notebook first** before launching the Gradio app — the app loads pre-trained models from disk.
 2. The Groq API key is **optional** — the classification works without it; only explanations require it.

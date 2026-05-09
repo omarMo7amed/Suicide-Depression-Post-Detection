@@ -11,17 +11,12 @@ MODEL_NAME = "mixtral-8x7b-32768"
 
 # ── Prompt templates ──────────────────────────────────────────────────────────
 
-SYSTEM_PROMPT = """You are a compassionate mental health AI assistant helping clinicians 
-and researchers understand why text posts are flagged as suicide-risk or non-risk.
+SYSTEM_PROMPT = """Explain why a text post is classified as suicide-risk or non-risk.
 
-Your role:
-1. Analyse the linguistic signals in the text
-2. Explain the prediction clearly and professionally
-3. Highlight specific phrases or patterns that influenced the classification
-4. Always maintain a caring, non-judgmental tone
-5. If the post is classified as suicide-risk, include a brief note on potential support
+Analyze the linguistic signals in the text and explain the prediction clearly.
+Highlight specific phrases or patterns that influenced the classification.
 
-Keep your response to 3–4 short paragraphs. Do NOT make clinical diagnoses."""
+Keep response to 2-3 short paragraphs. Do NOT make clinical diagnoses."""
 
 USER_PROMPT_TEMPLATE = """Analyse the following Reddit post and explain why the model classified it as shown below.
 
@@ -39,8 +34,7 @@ Please explain:
 {support_note}"""
 
 SUPPORT_NOTE_SUICIDE = """
-4. Briefly mention that professional support resources exist (e.g., crisis hotlines) 
-   without listing specific numbers."""
+4. Note that professional mental health support is available."""
 
 SUPPORT_NOTE_NORMAL = ""
 
@@ -57,7 +51,7 @@ def explain_prediction(text: str,
     key = api_key or GROQ_API_KEY
     if not key:
         return (
-            "⚠️ Groq API key not set. "
+            "Groq API key not set. "
             "Please set the GROQ_API_KEY environment variable to enable LLM explanations."
         )
 

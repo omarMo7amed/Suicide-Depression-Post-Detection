@@ -1,22 +1,9 @@
 """
-app_gradio.py
-=============
-Web interface for Mental Health Post Analysis System.
-Provides an interactive dashboard for analysing posts using machine learning models
-and optionally generating AI-powered explanations.
-
-Features:
-  - Text input for posts or messages
-  - Multiple ML model selection
-  - Real-time prediction with confidence scores
-  - AI-powered analysis explanations via Groq
-  - Related example posts from training data
-  - Professional, modern user interface
+app_gradio.py - Web interface for post classification.
+Provides an interactive dashboard for analyzing posts using machine learning models.
 
 Usage:
     python app_gradio.py
-
-The application will launch a web server at http://127.0.0.1:7860
 """
 
 from src.llm import explain_prediction
@@ -227,10 +214,9 @@ def build_interface():
         gr.Markdown(
             """
             # Mental Health Post Analysis System
-            #### Powered by NLP, Machine Learning, and AI
             
-            This tool analyses posts using advanced machine learning models trained on real Reddit data.
-            It identifies linguistic patterns associated with suicide risk to support research and moderation.
+            Classify posts using machine learning models trained on Reddit data.
+            Identifies patterns associated with suicide risk for research and moderation.
             
             **Important:** This system is designed for research and support purposes only. 
             It is not a substitute for professional mental health assessment or crisis intervention.
